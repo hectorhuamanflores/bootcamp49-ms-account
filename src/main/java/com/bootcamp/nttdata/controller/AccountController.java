@@ -1,10 +1,7 @@
 package com.bootcamp.nttdata.controller;
 
 import com.bootcamp.nttdata.model.Account;
-import com.bootcamp.nttdata.model.account;
-import com.bootcamp.nttdata.model.accountByNumDocRequest;
 import com.bootcamp.nttdata.service.AccountService;
-import com.bootcamp.nttdata.service.accountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -42,6 +42,7 @@ public class AccountDetailServiceImpl implements AccountDetailService {
 
     @Override
     public Mono<AccountDetail> getAccountByTyAccount(Integer tyAccount) {
-        return null;
+
+        return accountDetailRepository.findByTyAccount(tyAccount);
     }
 }

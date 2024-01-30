@@ -80,8 +80,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Flux<Account> getAccountByDocumentNumber(Integer numdoc) {
         log.error("INICIO_Account_DOCUMENT");
-        log.info("numDoc: "+numDoc);
-        return accountRepository.findByDocumentNumber(numDoc);
+        log.info("numDoc: "+numdoc);
+        return accountRepository.findByDocumentNumber(numdoc);
     }
 
     @Override
