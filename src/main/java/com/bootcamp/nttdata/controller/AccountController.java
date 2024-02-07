@@ -10,7 +10,10 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+import com.bootcamp.nttdata.model.dto.AccountByNumAccountRequest;
+import com.bootcamp.nttdata.model.dto.AccountByNumAccountResponse;
+import com.bootcamp.nttdata.model.dto.AccountByNumDocRequest;
+import com.bootcamp.nttdata.model.dto.UpdateAccountTrxRequest;
 import java.net.URI;
 
 @RestController
@@ -82,6 +85,30 @@ public class AccountController {
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
 
+    }
+
+    @PostMapping("/numAccount")
+    public Mono<ResponseEntity<AccountByNumAccountResponse>> getAccountById(@RequestBody AccountByNumAccountRequest accountByNumAccountRequest){
+        var Account=this.accountService.getAccountById(accountByNumAccountRequest.getNumAccount());
+        return Account.map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/numberDocument")
+    public Mono<ResponseEntity<Flux<Account>>> getAccountByNumDoc(@RequestBody AccountByNumDocRequest accountByNumDocRequest){
+        Flux<Account> list=this.accountService.getAccountByDocumentNumber(accountByNumDocRequest.getDocumentNumber());
+        return  Mono.just(ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(list));
+
+    }
+
+    @PutMapping("/updateAccountTrx")
+    public Mono<ResponseEntity<Account>> updateCreditConsumptionPayment(@RequestBody UpdateAccountTrxRequest trx){
+
+        return this.accountService.updateAccountTrx(trx)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 
 }
