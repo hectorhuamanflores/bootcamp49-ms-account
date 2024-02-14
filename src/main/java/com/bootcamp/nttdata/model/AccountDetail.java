@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @Builder
-@Document(value = "accountsDetail")
+@Document(value = "accounts_detail")
 public class AccountDetail {
 
     @Id

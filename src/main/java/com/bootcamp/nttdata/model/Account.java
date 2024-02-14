@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Document(collection = "accounts")
 public class Account {
 
-
+  @Id
   private String id;
   private String  numAccount;       // Numero de cuenta bancaria
   private Integer documentNumber;   // Dni - Ruc del cliente

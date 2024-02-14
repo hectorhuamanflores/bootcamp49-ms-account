@@ -89,7 +89,7 @@ public class AccountController {
 
     @PostMapping("/numAccount")
     public Mono<ResponseEntity<AccountByNumAccountResponse>> getAccountById(@RequestBody AccountByNumAccountRequest accountByNumAccountRequest){
-        var Account=this.accountService.getAccountById(accountByNumAccountRequest.getNumAccount());
+        var Account=this.accountService.getAccountByNumAccount(accountByNumAccountRequest.getNumAccount());
         return Account.map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
