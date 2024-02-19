@@ -104,7 +104,7 @@ public class AccountController {
     }
 
     @PutMapping("/updateAccountTrx")
-    public Mono<ResponseEntity<Account>> updateCreditConsumptionPayment(@RequestBody UpdateAccountTrxRequest trx){
+    public Mono<ResponseEntity<Account>> updatePayment(@RequestBody UpdateAccountTrxRequest trx){
 
         return this.accountService.updateAccountTrx(trx)
                 .map(ResponseEntity::ok)

@@ -52,7 +52,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Mono<AccountByNumAccountResponse> getAccountByNumAccount(String numAccount) {
-        return accountRepository.findById(numAccount)
+        log.info("inicio - "+numAccount);
+        return accountRepository.findByNumAccount(numAccount)
                 .flatMap(r -> {
                     log.info("getNumAccount"+r.getNumAccount());
                     log.info("getTyAccount"+r.getTyAccount());
@@ -90,7 +91,7 @@ public class AccountServiceImpl implements AccountService {
         log.info("idCredit: "+trx.getNumAccount());
         log.info("type: "+trx.getType());
         log.info("amount: "+trx.getAmount());
-        return accountRepository.findById(trx.getNumAccount())
+        return accountRepository.findByNumAccount(trx.getNumAccount())
                 .flatMap( object ->{
                     object.setBalance(object.getBalance()+trx.getAmount()*trx.getType());
                     object.setMovement(object.getMovement()+1);
